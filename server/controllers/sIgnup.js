@@ -14,7 +14,7 @@ const signup = (req, res, next) => {
     .then((data) => {
       const { rowCount } = data;
       if (rowCount) {
-        CustomError('this email is in use', 409);
+        throw CustomError('this email is in use', 409);
       }
       return password;
     })
