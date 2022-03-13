@@ -1,10 +1,10 @@
-const { addUser, getUser } = require('../database/queries');
+const { addUser, getUser } = require('../../database/queries');
 const {
   signupSchema,
   hashPassword,
   CustomError,
   jwtAsync,
-} = require('../utils');
+} = require('../../utils');
 
 const signup = (req, res, next) => {
   const { username, email, password } = req.body;
@@ -38,5 +38,4 @@ const signup = (req, res, next) => {
       }
     });
 };
-
 module.exports = signup;
