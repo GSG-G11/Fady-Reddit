@@ -1,11 +1,11 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, posts CASCADE;
+DROP TABLE IF EXISTS users, posts ,comments CASCADE;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     email VARCHAR(500) UNIQUE,
-    username VARCHAR(500) UNIQUE,
+    username VARCHAR(500),
     password VARCHAR(100) NOT NULL,
     img TEXT
 );
