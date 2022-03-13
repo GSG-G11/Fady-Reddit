@@ -1,3 +1,5 @@
+const CustomError = require('./CustomError');
+const jwtAsync = require('./jwt');
 const comaprePassword = require('./passwords/comparepassword');
 const hashPassword = require('./passwords/hashpassword');
 const signinSchema = require('./validation/signinSchema');
@@ -8,4 +10,6 @@ module.exports = {
   signupSchema,
   hashPassword,
   comaprePassword,
+  CustomError,
+  jwtAsync,
 };
