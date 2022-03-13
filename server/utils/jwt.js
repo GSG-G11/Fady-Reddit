@@ -10,4 +10,5 @@ const jwtAsync = (payLoad) =>
       return resolve(token);
     });
   });
+
 module.exports = jwtAsync;
