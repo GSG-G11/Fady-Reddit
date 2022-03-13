@@ -1,0 +1,22 @@
+BEGIN;
+
+DROP TABLE IF EXISTS users, posts CASCADE;
+
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(500) UNIQUE,
+    username VARCHAR(500) UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    img TEXT
+);
+
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    post_text TEXT NOT NULL,
+    vote INTEGER DEFAULT 0,
+    post_date TIMESTAMP NOT NULL DEFAULT NOW(),
+    user_id INT REFERENCES users(id) ON DELETE CASCADE
+);
+
+COMMIT;
