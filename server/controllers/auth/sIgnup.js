@@ -28,8 +28,7 @@ const signup = (req, res, next) => {
       res
         .status(201)
         .cookie('token', token)
-        .json({ message: 'Success', status: 201 })
-    )
+        .json({ message: 'Success', status: 201 }))
     .catch((err) => {
       if (err.details) {
         next(CustomError(err.details[0].message, 400));

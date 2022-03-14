@@ -1,7 +1,7 @@
 const { notFound, serverError } = require('./Errors');
 const signup = require('./auth/sIgnup');
 const login = require('./auth/login');
-const { upvoteHandler, downvoteHandler, addPostHandler } = require('./posts');
+const { upvoteHandler, downvoteHandler, addPostHandler, homePostsHandler } = require('./posts');
 const { loginPage, signupPage, profile } = require('./views');
 
 module.exports = {
@@ -15,4 +15,5 @@ module.exports = {
   loginPage,
   signupPage,
   profile,
+  homePostsHandler,
 };
