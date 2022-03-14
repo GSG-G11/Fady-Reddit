@@ -1,5 +1,5 @@
 const publicRoute = require('express').Router();
-const { loginPage, signupPage, profile, addPostHandler, upvoteHandler, downvoteHandler, homePostsHandler, deletePostHandler, userPostshandler, addCommentHandler } = require('../controllers');
+const { loginPage, signupPage, profile, addPostHandler, upvoteHandler, downvoteHandler, homePostsHandler, deletePostHandler, userPostshandler, addCommentHandler, getCommentsHandler } = require('../controllers');
 const { checkAuth } = require('../middlewares');
 
 publicRoute.get('/login', loginPage);
@@ -12,5 +12,6 @@ publicRoute.get('/homePosts', homePostsHandler);
 publicRoute.delete('/posts/:postId', checkAuth, deletePostHandler);
 publicRoute.get('/posts/:username', userPostshandler);
 publicRoute.post('/comments/:postId', checkAuth, addCommentHandler);
+publicRoute.get('/comments/:postId', getCommentsHandler);
 
 module.exports = publicRoute;
