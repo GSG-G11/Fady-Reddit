@@ -4,6 +4,7 @@ const {
   downvote,
   homePosts,
   deletePost,
+  userPosts,
 } = require('../database/queries');
 const { CustomError } = require('../utils');
 
@@ -45,6 +46,12 @@ const deletePostHandler = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+const userPostshandler = (req, res, next) => {
+  const { username } = req.params;
+  userPosts(username)
+    .then((data) => res.json(data.rows))
+    .catch((err) => next(err));
+};
 
 module.exports = {
   addPostHandler,
@@ -52,4 +59,5 @@ module.exports = {
   downvoteHandler,
   homePostsHandler,
   deletePostHandler,
+  userPostshandler,
 };

@@ -1,4 +1,4 @@
-const { addUser, getUser } = require('../../database/queries');
+const { addUser, getUser, getUserByname } = require('../../database/queries');
 const {
   signupSchema,
   hashPassword,
@@ -12,10 +12,17 @@ const signup = (req, res, next) => {
     .validateAsync(req.body)
     .then(() => getUser(email))
     .then((data) => {
-      console.log();
       const { rowCount } = data;
       if (rowCount) {
         throw CustomError('this email is in use', 409);
+      }
+      return username;
+    })
+    .then((name) => getUserByname(name))
+    .then((data) => {
+      const { rowCount } = data;
+      if (rowCount) {
+        throw CustomError('this username is in use', 409);
       }
       return password;
     })
