@@ -7,11 +7,12 @@ const {
 } = require('../../utils');
 
 const signup = (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, img } = req.body;
   signupSchema
     .validateAsync(req.body)
     .then(() => getUser(email))
     .then((data) => {
+      console.log();
       const { rowCount } = data;
       if (rowCount) {
         throw CustomError('this email is in use', 409);
@@ -19,7 +20,7 @@ const signup = (req, res, next) => {
       return password;
     })
     .then((pass) => hashPassword(pass))
-    .then((hashedPassword) => addUser(username, email, hashedPassword))
+    .then((hashedPassword) => addUser(username, email, hashedPassword, img))
     .then((data) => {
       const { id } = data.rows[0];
       return jwtAsync({ id, username });
