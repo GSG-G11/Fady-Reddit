@@ -1,4 +1,5 @@
-const { addComment, getComments } = require('../database/queries');
+const { addComment, getComments, deleteComment } = require('../database/queries');
+const { CustomError } = require('../utils');
 
 const addCommentHandler = (req, res, next) => {
   const { userId } = req;
@@ -15,4 +16,16 @@ const getCommentsHandler = (req, res, next) => {
     .then((data) => res.json(data.rows))
     .catch((err) => next(err));
 };
-module.exports = { addCommentHandler, getCommentsHandler };
+const deleteCommentHandler = (req, res, next) => {
+  const { userId } = req;
+  const { commentId } = req.params;
+  deleteComment(commentId, userId)
+    .then((data) => {
+      if (!data.rowCount) { throw CustomError('unauthroized', 401); } else {
+        res.json({ message: 'deleted', status: 200 });
+      }
+    })
+    .catch((err) => next(err));
+};
+
+module.exports = { addCommentHandler, getCommentsHandler, deleteCommentHandler };
