@@ -1,4 +1,4 @@
-const { sign } = require('jsonwebtoken');
+const { sign, verify } = require('jsonwebtoken');
 
 const jwtAsync = (payLoad) =>
   new Promise((resolve, reject) => {
@@ -10,5 +10,12 @@ const jwtAsync = (payLoad) =>
       return resolve(token);
     });
   });
+const verifyToken = (token, privateKey) => new Promise((resolve, reject) => {
+  verify(token, privateKey, (err, decoded) => {
+    if (err) return reject(err);
 
-module.exports = jwtAsync;
+    return resolve(decoded);
+  });
+});
+
+module.exports = { jwtAsync, verifyToken };

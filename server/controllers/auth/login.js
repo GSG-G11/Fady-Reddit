@@ -31,9 +31,8 @@ const login = (req, res, next) => {
     })
     .then((token) =>
       res
-        .status(201)
         .cookie('token', token)
-        .json({ message: 'Success', status: 201 }))
+        .json({ message: 'Success', status: 200 }))
     .catch((err) => {
       if (err.details) {
         next(CustomError(err.details[0].message, 400));
