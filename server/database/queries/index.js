@@ -1,4 +1,5 @@
 const addComment = require('./comments/addComment');
+const deleteComment = require('./comments/deleteComment');
 const getComments = require('./comments/getComments');
 const addPost = require('./posts/addpost');
 const deletePost = require('./posts/deletePost');
@@ -21,4 +22,5 @@ module.exports = {
   userPosts,
   addComment,
   getComments,
+  deleteComment,
 };
