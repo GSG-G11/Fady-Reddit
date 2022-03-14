@@ -1,4 +1,4 @@
-const { addComment } = require('../database/queries');
+const { addComment, getComments } = require('../database/queries');
 
 const addCommentHandler = (req, res, next) => {
   const { userId } = req;
@@ -8,4 +8,11 @@ const addCommentHandler = (req, res, next) => {
     .then(() => res.json({ message: 'success', status: 201 }))
     .catch((err) => next(err));
 };
-module.exports = addCommentHandler;
+
+const getCommentsHandler = (req, res, next) => {
+  const { postId } = req.params;
+  getComments(postId)
+    .then((data) => res.json(data.rows))
+    .catch((err) => next(err));
+};
+module.exports = { addCommentHandler, getCommentsHandler };

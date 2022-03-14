@@ -3,7 +3,7 @@ const signup = require('./auth/sIgnup');
 const login = require('./auth/login');
 const { upvoteHandler, downvoteHandler, addPostHandler, homePostsHandler, deletePostHandler, userPostshandler } = require('./posts');
 const { loginPage, signupPage, profile } = require('./views');
-const addCommentHandler = require('./comments');
+const { addCommentHandler, getCommentsHandler } = require('./comments');
 
 module.exports = {
   notFound,
@@ -20,4 +20,5 @@ module.exports = {
   deletePostHandler,
   userPostshandler,
   addCommentHandler,
+  getCommentsHandler,
 };
