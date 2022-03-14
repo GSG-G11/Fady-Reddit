@@ -7,7 +7,7 @@ const notFound = (req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 const serverError = (err, req, res, next) => {
-  console.dir(err);
+  console.log(err);
   if (err.status) {
     console.log({ message: err.message, status: err.status });
     res.json({ message: err.message, status: err.status });
