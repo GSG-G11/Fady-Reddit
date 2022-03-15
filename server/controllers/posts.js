@@ -10,8 +10,8 @@ const { CustomError } = require('../utils');
 
 const addPostHandler = (req, res, next) => {
   const { userId } = req;
-  const { title, content } = req.body;
-  addPost(title, content, userId)
+  const { title, content, img } = req.body;
+  addPost(title, content, userId, img)
     .then(() => res.json({ message: 'success', status: 201 }))
     .catch((err) => next(err));
 };
