@@ -4,6 +4,7 @@ const login = require('./auth/login');
 const { upvoteHandler, downvoteHandler, addPostHandler, homePostsHandler, deletePostHandler, userPostshandler } = require('./posts');
 const { loginPage, signupPage, profile } = require('./views');
 const { addCommentHandler, getCommentsHandler, deleteCommentHandler } = require('./comments');
+const logout = require('./auth/logout');
 
 module.exports = {
   notFound,
@@ -22,4 +23,5 @@ module.exports = {
   addCommentHandler,
   getCommentsHandler,
   deleteCommentHandler,
+  logout,
 };
