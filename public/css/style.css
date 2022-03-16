@@ -28,7 +28,7 @@ body {
      outline: none;
  }
  .search-form{
-    width: 25%;
+    width: 40%;
     border: 1px solid rgb(224, 221, 221);
     background-color: #e5eaf0;
     border-radius: 5px;
@@ -95,4 +95,58 @@ body {
   }
   .img-header-container{
       width: 60px;
+    }
+    .posts-container{
+        width: 600px;
+        margin-top: 100px;
+        margin-left: 30%;
+        display: flex;
+        flex-direction: column;
+        
+
+        
+    }
+    .post{
+        width: 100%;  
+        background-color: white; 
+        display: flex; 
+        margin: 20px 10px;  
+    }
+    .votes-container{
+        min-height:100% ;
+        width: 10%;
+        background-color: rgb(234, 229, 236);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    #arrow-up:hover{
+        cursor: pointer;
+        color:red
+    }
+    #arrow-down:hover{
+        cursor: pointer;
+        color:blue;
+    }
+    .posted-by{
+        color: gray;
+        font-size: 0.8rem;
+    }
+    .posted-by a{
+        color:gray;
+    }
+    .post-title{
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    #comments-section{
+        margin-left: 10px;
+        font-size: 25px;
+    }
+    #comments-section:hover{
+        cursor: pointer;
+    }
+    .post-img{
+        max-height: 500px;
     }
