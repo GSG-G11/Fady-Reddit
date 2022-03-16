@@ -67,4 +67,23 @@ body {
     border-radius:100px;
     margin-right: 40px;
  }
- 
+ .signup:hover{
+     cursor: pointer;
+ }
+ .login:hover{
+    cursor: pointer;
+}
+ .input-field {
+    border-radius: 5px;
+    padding: 3px;
+    width: 180px;
+    border: none;
+    outline: none;
+    margin: 10px;
+  }
+  .signup-container{
+      width: 500px;
+      height: 500px;
+      margin: auto;
+      margin-top: 300px;
+  }
