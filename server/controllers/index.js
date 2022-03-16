@@ -6,6 +6,7 @@ const { loginPage, signupPage, profile } = require('./views');
 const { addCommentHandler, getCommentsHandler, deleteCommentHandler } = require('./comments');
 const logout = require('./auth/logout');
 const userData = require('./auth/userData');
+const profileData = require('./auth/profiles');
 
 module.exports = {
   notFound,
@@ -26,4 +27,5 @@ module.exports = {
   deleteCommentHandler,
   logout,
   userData,
+  profileData,
 };
