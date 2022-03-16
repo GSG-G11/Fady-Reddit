@@ -41,7 +41,7 @@ const deletePostHandler = (req, res, next) => {
   deletePost(postId, userId)
     .then((data) => {
       if (!data.rowCount) { throw CustomError('unauthroized', 401); } else {
-        res.json({ message: 'deleted', status: 200 });
+        res.json({ message: 'deleted', status: 201 });
       }
     })
     .catch((err) => next(err));

@@ -58,6 +58,7 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
     const postImage = document.createElement('img');
     postImage.setAttribute('src', imgLink);
     postImage.setAttribute('class', 'post-img');
+    postImage.setAttribute('alt', 'post-img');
     contentContainer.appendChild(postImage);
   }
   const comments = document.createElement('i');
