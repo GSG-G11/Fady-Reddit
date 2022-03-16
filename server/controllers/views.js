@@ -9,7 +9,7 @@ const signupPage = (req, res) => {
   res.sendFile(file);
 };
 const profile = (req, res) => {
-  const file = join(__dirname, '..', '..', 'public/html/signup.html');
+  const file = join(__dirname, '..', '..', 'public/html/profile.html');
   res.sendFile(file);
 };
 module.exports = { loginPage, signupPage, profile };

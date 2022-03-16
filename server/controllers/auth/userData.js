@@ -1,3 +1,4 @@
+const { getUserByname } = require('../../database/queries');
 const { verifyToken } = require('../../utils');
 
 const userData = (req, res, next) => {
@@ -5,9 +6,11 @@ const userData = (req, res, next) => {
   if (!token) {
     res.json({ message: 'no user is signed in', status: 400 });
   } else {
-    verifyToken(token, process.env.PRIVATE_KEY).then((decodedToken) => {
-      res.json(decodedToken);
-    }).catch((err) => next(err));
+    verifyToken(token, process.env.PRIVATE_KEY)
+      .then((decodedToken) => decodedToken.username)
+      .then((name) => getUserByname(name))
+      .then((data) => res.json(data.rows[0]))
+      .catch((err) => next(err));
   }
 };
 
