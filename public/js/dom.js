@@ -69,13 +69,27 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
 
 const voteUp = (id) => {
   const votesNumber = document.querySelector(`#votes-${id}`);
-  fetch(`/posts/${id}/upvote`);
-  votesNumber.textContent = +votesNumber.textContent + 1;
+  fetch(`/posts/${id}/upvote`).then((res) => res.json()).then((data) => {
+    if (data.status === 401) {
+      window.location.href = '/login';
+    } else {
+      votesNumber.textContent = +votesNumber.textContent + 1;
+    }
+  });
+
 };
 const voteDown = (id) => {
   const votesNumber = document.querySelector(`#votes-${id}`);
-  fetch(`/posts/${id}/downvote`);
-  votesNumber.textContent = +votesNumber.textContent - 1;
+  fetch(`/posts/${id}/downvote`).then((res) => res.json()).then((data) => {
+    if (data.status === 401) {
+      window.location.href = '/login';
+    } else {
+      votesNumber.textContent = +votesNumber.textContent - 1;
+    }
+
+  });
+
+
 
 };
 
