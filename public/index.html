@@ -29,10 +29,43 @@
     <a href='/signup' class='signup'>Sign up</a>
 </div>
 </header>
+
+            
+    <form class='post-form'>
+      <label for="title">title</label>
+        <input
+          class="add-post-title"
+          type="title"
+          id="title"
+          name="title"
+          placeholder="Enter title here"
+          minlength="3"
+          required
+        /><br>
+        <label for="content">Content</label>
+        <textarea class="add-post-content"
+        type="text"
+        id="content"
+        name="content"
+        minlength="3"
+        required>
+          
+        </textarea><br>
+        <label for="img">image</label>
+        <input
+          class="add-post-img"
+          id="img"
+          name="img"
+          placeholder="enter image here"
+        /><br>
+        <input type="submit" value="submit"  class='login'/>
+    </form>
+
 <div class="posts-container">
   
 </div>
     <script src='./js/fetchUserData.js'></script>
+    <script src='./js/helpers.js'></script>
     <script src='./js/dom.js'></script>
     <script src='./js/home.js'></script>
 </body>
