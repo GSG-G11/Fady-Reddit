@@ -19,6 +19,7 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
 
   const votesNumber = document.createElement('p');
   votesNumber.setAttribute('class', 'votes-number');
+  votesNumber.setAttribute('id', `votes-${postId}`);
   votesContainer.appendChild(votesNumber);
   votesNumber.textContent = votes;
 
@@ -65,3 +66,16 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
   comments.setAttribute('onclick', `displayComments(${postId})`);
   contentContainer.appendChild(comments);
 };
+
+const voteUp = (id) => {
+  const votesNumber = document.querySelector(`#votes-${id}`);
+  fetch(`/posts/${id}/upvote`);
+  votesNumber.textContent = +votesNumber.textContent + 1;
+};
+const voteDown = (id) => {
+  const votesNumber = document.querySelector(`#votes-${id}`);
+  fetch(`/posts/${id}/downvote`);
+  votesNumber.textContent = +votesNumber.textContent - 1;
+
+};
+
