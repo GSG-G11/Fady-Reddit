@@ -19,13 +19,13 @@ const addPostHandler = (req, res, next) => {
 const upvoteHandler = (req, res, next) => {
   const { postId } = req.params;
   upvote(postId)
-    .then(() => res.send())
+    .then(() => res.json({ message: 'upvoted', status: 201 }))
     .catch((err) => next(err));
 };
 const downvoteHandler = (req, res, next) => {
   const { postId } = req.params;
   downvote(postId)
-    .then(() => res.send())
+    .then(() => res.json({ message: 'downvoted', status: 201 }))
     .catch((err) => next(err));
 };
 
