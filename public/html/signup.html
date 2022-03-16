@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="../css/style.css">
+    <title>Signup</title>
+</head>
+<body>
+    <header>
+        <a href='/'>
+        <div class="img-container">
+            <img src='../images/Reddit-Logo.png'/>
+        </div>
+    </a>
+    <form class='search-form'>
+        <input class='search-input' type='text' placeholder="Search reddit"/>     
+        </form>
+        <div class="logs">
+            <a href='/login' class='login'>Log in</a>
+            <a href='/signup' class='signup'>Sign up</a>
+        </div>
+        </header>
+        <div class="signup-container">
+            
+            <form class='signup-form'>
+                <label for="fname">user name</label>
+                <input
+                class="input-field"
+                type="text"
+                id="name"
+                name="username"
+                placeholder="Enter your name"
+                required
+              /><br>
+              <label for="email">Email</label>
+                <input
+                  class="input-field"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                /><br>
+                <label for="password">Password</label>
+                <input
+                  class="input-field"
+                  type="password"
+                  id="password"
+                  name="password"
+                  minlength="3"
+                  placeholder="enter passowrd"
+                  required
+                /><br>
+                <label for="image">image link</label>
+                <input
+                  class="input-field"
+                  type="url"
+                  id="image"
+                  name="image"
+                  placeholder="enter img url"
+                  required
+                /><br>
+                <p>If you have an account click <a href='/login'>here</a>  </p>
+                
+                <input type="submit" class='signup'/>
+            </form>
+        </div>
+    
+</body>
+</html>
