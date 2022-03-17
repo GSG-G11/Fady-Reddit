@@ -5,7 +5,13 @@ const commentModal = document.getElementById('myModal');
 const closeModal = document.getElementsByClassName('close')[0];
 const commentsContainer = document.querySelector('.comments-contaier');
 const commentForm = document.querySelector('.comment-form');
+const searchForm = document.querySelector('.search-form');
+const searchInput = document.querySelector('.search-input');
 
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  window.location.href = `/profile/${searchInput.value}`;
+});
 
 const createPost = (postId, votes, username, title, content, imgLink) => {
   const headerUsername = document.querySelector('.header-username');
@@ -130,7 +136,6 @@ const voteDown = (id) => {
 };
 
 const deletePost = (id) => {
-  console.log('hi');
   fetch(`/posts/${id}`, { method: 'DELETE' }).then((res) => res.json()).then((data) => {
     const post = document.querySelector(`#post-${id}`);
     post.innerHTML = '';
@@ -142,18 +147,15 @@ const displayComments = (id) => {
   commentModal.style.display = 'block';
 
   fetch(`/comments/${id}`).then((res) => res.json()).then((data) => {
-    console.log(data);
     data.forEach((ele) => { createComment(ele.username, ele.content); });
 
   });
   commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const content = e.target.content.value;
-    console.log(content);
     const headerUsername = document.querySelector('.header-username');
     // eslint-disable-next-line no-undef
     fetchData({ content }, 'post', `/comments/${id}`).then((data) => {
-      console.log(data);
       if (data.status !== 201) {
         window.location.href = '/login';
       } else {

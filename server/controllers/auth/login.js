@@ -7,7 +7,6 @@ const {
 } = require('../../utils');
 
 const login = (req, res, next) => {
-  console.log(req.body);
   const { email, password } = req.body;
   let id;
   let username;
