@@ -12,7 +12,6 @@ postForm.addEventListener('submit', (e) => {
   const title = e.target.title.value;
   const content = e.target.content.value.trim();
   const img = e.target.img.value;
-  console.log(title, content, img);
 
   // eslint-disable-next-line no-undef
   fetchData({ title, content, img }, 'post', '/posts').then((data) => {
