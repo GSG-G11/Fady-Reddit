@@ -4,6 +4,7 @@
 const commentModal = document.getElementById('myModal');
 const closeModal = document.getElementsByClassName('close')[0];
 const commentsContainer = document.querySelector('.comments-contaier');
+const commentForm = document.querySelector('.comment-form');
 
 
 const createPost = (postId, votes, username, title, content, imgLink) => {
@@ -140,10 +141,25 @@ const displayComments = (id) => {
   commentsContainer.innerHTML = '';
   commentModal.style.display = 'block';
 
-  fetch(`comments/${id}`).then((res) => res.json()).then((data) => {
+  fetch(`/comments/${id}`).then((res) => res.json()).then((data) => {
     console.log(data);
     data.forEach((ele) => { createComment(ele.username, ele.content); });
 
+  });
+  commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const content = e.target.content.value;
+    console.log(content);
+    const headerUsername = document.querySelector('.header-username');
+    // eslint-disable-next-line no-undef
+    fetchData({ content }, 'post', `/comments/${id}`).then((data) => {
+      console.log(data);
+      if (data.status !== 201) {
+        window.location.href = '/login';
+      } else {
+        createComment(headerUsername.textContent.split(' ')[1], content);
+      }
+    });
   });
 };
 closeModal.onclick = () => {
@@ -155,4 +171,5 @@ window.onclick = (e) => {
     commentModal.style.display = 'none';
   }
 };
+
 
