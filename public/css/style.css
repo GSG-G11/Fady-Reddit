@@ -114,12 +114,15 @@ body {
     }
     .votes-container{
         min-height:100% ;
-        width: 10%;
+        width: 7%;
         background-color: rgb(234, 229, 236);
         display: flex;
         flex-direction: column;
         align-items: center;
         
+    }
+    .content-container{
+        margin-left: 10px;
     }
     #arrow-up:hover{
         cursor: pointer;
