@@ -1,10 +1,10 @@
 const logs = document.querySelector('.logs');
-console.log(logs);
+const addPostForm = document.querySelector('.add-post-container');
 
 fetch('/api/v1/userData').then((res) => res.json()).then((data) => {
   if (data.username) {
     logs.innerHTML = '';
-
+    addPostForm.style.display = 'block';
     const headerImgContainer = document.createElement('div');
     headerImgContainer.setAttribute('class', 'img-header-container');
     headerImgContainer.src = data.img;

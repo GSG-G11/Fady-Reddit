@@ -114,3 +114,5 @@ const deletePost = (id) => {
     post.innerHTML = '';
   });
 };
+
+
