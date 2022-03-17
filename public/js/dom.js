@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
+const commentModal = document.getElementById('myModal');
+const closeModal = document.getElementsByClassName('close')[0];
+const commentsContainer = document.querySelector('.comments-contaier');
 
 
 const createPost = (postId, votes, username, title, content, imgLink) => {
@@ -80,8 +83,26 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
       deletePost.setAttribute('id', 'comments-section');
       deletePost.setAttribute('onclick', `deletePost(${postId})`);
       contentContainer.appendChild(deletePost);
+      profileLink.textContent = ' you';
     }
   }
+};
+const createComment = (username, content) => {
+
+  const commentCard = document.createElement('div');
+  commentCard.setAttribute('class', 'comment-card');
+  commentsContainer.appendChild(commentCard);
+
+  const commentUsername = document.createElement('a');
+  commentUsername.setAttribute('href', `/profile/${username}`);
+  commentUsername.setAttribute('class', 'comment-username');
+  commentUsername.textContent = username;
+  commentCard.appendChild(commentUsername);
+
+  const commentContent = document.createElement('p');
+  commentContent.setAttribute('class', 'comment-content');
+  commentContent.textContent = content;
+  commentCard.appendChild(commentContent);
 };
 
 const voteUp = (id) => {
@@ -115,4 +136,23 @@ const deletePost = (id) => {
   });
 };
 
+const displayComments = (id) => {
+  commentsContainer.innerHTML = '';
+  commentModal.style.display = 'block';
+
+  fetch(`comments/${id}`).then((res) => res.json()).then((data) => {
+    console.log(data);
+    data.forEach((ele) => { createComment(ele.username, ele.content); });
+
+  });
+};
+closeModal.onclick = () => {
+  commentModal.style.display = 'none';
+};
+
+window.onclick = (e) => {
+  if (e.target === commentModal) {
+    commentModal.style.display = 'none';
+  }
+};
 
