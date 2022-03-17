@@ -18,6 +18,7 @@ fetch('/api/v1/userData').then((res) => res.json()).then((data) => {
     headerImgContainer.appendChild(headerImg);
 
     const usernameHeader = document.createElement('p');
+    usernameHeader.setAttribute('class', 'header-username');
     usernameHeader.textContent = `Welcome ${data.username}`;
     logs.appendChild(usernameHeader);
 

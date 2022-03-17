@@ -1,9 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
+
+
 const createPost = (postId, votes, username, title, content, imgLink) => {
+  const headerUsername = document.querySelector('.header-username');
+
+
   const postsContainer = document.querySelector('.posts-container');
   const post = document.createElement('div');
+  post.setAttribute('id', `post-${postId}`);
   post.setAttribute('class', 'post');
   postsContainer.appendChild(post);
 
@@ -66,6 +72,16 @@ const createPost = (postId, votes, username, title, content, imgLink) => {
   comments.setAttribute('id', 'comments-section');
   comments.setAttribute('onclick', `displayComments(${postId})`);
   contentContainer.appendChild(comments);
+  if (headerUsername) {
+    const LoggedInuser = headerUsername.textContent.split(' ')[1];
+    if (LoggedInuser === username) {
+      const deletePost = document.createElement('i');
+      deletePost.setAttribute('class', 'fa fa-trash');
+      deletePost.setAttribute('id', 'comments-section');
+      deletePost.setAttribute('onclick', `deletePost(${postId})`);
+      contentContainer.appendChild(deletePost);
+    }
+  }
 };
 
 const voteUp = (id) => {
@@ -89,8 +105,12 @@ const voteDown = (id) => {
     }
 
   });
-
-
-
 };
 
+const deletePost = (id) => {
+  console.log('hi');
+  fetch(`/posts/${id}`, { method: 'DELETE' }).then((res) => res.json()).then((data) => {
+    const post = document.querySelector(`#post-${id}`);
+    post.innerHTML = '';
+  });
+};

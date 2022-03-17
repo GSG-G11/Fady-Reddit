@@ -17,7 +17,7 @@ fetch('/api/v1/userData').then((res) => res.json()).then((data) => {
 
     const usernameHeader = document.createElement('p');
 
-    usernameHeader.href = '/api/v1/logout';
+    usernameHeader.setAttribute('class', 'header-username');
     usernameHeader.textContent = `Welcome ${data.username}`;
     logs.appendChild(usernameHeader);
 
