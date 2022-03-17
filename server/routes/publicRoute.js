@@ -13,6 +13,5 @@ publicRoute.delete('/posts/:postId', checkAuth, deletePostHandler);
 publicRoute.get('/posts/:username', userPostshandler);
 publicRoute.post('/comments/:postId', checkAuth, addCommentHandler);
 publicRoute.get('/comments/:postId', getCommentsHandler);
-publicRoute.get('/profile/comments/:postId', getCommentsHandler);
 publicRoute.delete('/comments/:commentId', checkAuth, deleteCommentHandler);
 module.exports = publicRoute;
